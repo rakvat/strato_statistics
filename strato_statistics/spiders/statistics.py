@@ -8,7 +8,8 @@ sys.path.append('/opt/settings')
 import strato_config
 
 class StatisticsSpider(scrapy.Spider):
-    DATES = ['2017-11-01', '2017-12-01', '2018-01-01', '2018-02-01', '2018-03-01', '2018-04-01']
+    DATES = ['2017-12-01', '2018-01-01', '2018-02-01', '2018-03-01',
+            '2018-04-01', '2018-05-01']
     name = 'statistics'
     allowed_domains = ['www.strato.de']
     start_urls = ['https://www.strato.de/apps/CustomerService']
