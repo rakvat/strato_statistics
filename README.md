@@ -1,7 +1,5 @@
-tested with python 3.6
+tested with python 3.10
 
-`conda env create -f=requirements.txt -n scraper`
-
-`. activate scraper`
-
-`scrapy crawl statistics`
+- install requirements.txt
+- add a `strato_config.py` file that defines `USERNAME` and `PASSWORD` constants (gitignored)
+- start with `scrapy crawl statistics`

@@ -1,7 +1,5 @@
-import os
 import glob
 import pandas as pd
-
 
 frames = []
 for filename in glob.glob('data/*.txt'):

@@ -1,2 +1,3 @@
-data
+data*
 notebooks/.ipynb_checkpoints
+strato_config.py
