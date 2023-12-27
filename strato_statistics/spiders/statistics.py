@@ -10,8 +10,8 @@ sys.path.append('/opt/settings')
 import strato_config
 
 class StatisticsSpider(scrapy.Spider):
-    START_DATE = '2017-12-01'
-    END_DATE = '2022-03-01'
+    START_DATE = '2023-01-01'
+    END_DATE = '2023-12-31'
     name = 'statistics'
     allowed_domains = ['www.strato.de']
     start_urls = ['https://www.strato.de/apps/CustomerService']
@@ -24,7 +24,7 @@ class StatisticsSpider(scrapy.Spider):
     def after_login(self, response):
         # check login succeed before going on
         if b'authentication failed' in response.body:
-            self.log('Login failed', level=log.ERROR)
+            self.log('Login failed', level=self.log.ERROR)
             return
         else:
             self.log('Logged in')
@@ -52,7 +52,7 @@ class StatisticsSpider(scrapy.Spider):
         df = pd.DataFrame(list(zip(urls, values)))
         condition = df[0].str.startswith('http://www.transform-social.org') & ~df[0].str.startswith('http://www.transform-social.org/stylesheets') & ~df[0].str.startswith('http://www.transform-social.org/javascript') & ~df[0].str.startswith('http://www.transform-social.org/favicon.ico')
         transform = df[condition]
-        date_from_url = response.url.split("=")[-2].split("&")[0]
+        date_from_url = response.url.split("=")[-3].split("&")[0]
         filename = f'data/{date_from_url}.txt'
         self.log(filename)
         values = transform.values
