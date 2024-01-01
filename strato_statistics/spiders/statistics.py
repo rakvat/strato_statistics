@@ -11,14 +11,15 @@ import strato_config
 
 class StatisticsSpider(scrapy.Spider):
     START_DATE = '2023-01-01'
-    END_DATE = '2023-12-31'
+    END_DATE = '2024-01-31'
     name = 'statistics'
     allowed_domains = ['www.strato.de']
     start_urls = ['https://www.strato.de/apps/CustomerService']
 
     def parse(self, response):
+        password = input('Enter Strato Master Password\n')
         return [scrapy.FormRequest.from_response(response,
-                    formdata={'identifier': strato_config.USERNAME, 'passwd': strato_config.PASSWORD},
+                    formdata={'identifier': strato_config.USERNAME, 'passwd': password},
                     callback=self.after_login)]
 
     def after_login(self, response):
